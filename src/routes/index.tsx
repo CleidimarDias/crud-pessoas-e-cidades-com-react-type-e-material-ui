@@ -11,8 +11,9 @@ export const AppRouts = () => {
              variant='contained'
               color='primary'
               onClick={toggleTheme}
-
-              >testando</Button>} />
+              >testando</Button>}
+            />
+             
             <Route path='/gostosas' element={<h1>gostosas</h1>} />
 
             <Route path='*' element={<Navigate to="/pagina-inicial" />} />

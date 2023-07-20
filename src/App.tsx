@@ -1,6 +1,8 @@
 import { BrowserRouter } from 'react-router-dom'
 import { AppRouts } from './routes'
 import { AppThemeProvider } from './shared/contexts/ThemeContext'
+import { MenuLateral } from './shared/components'
+
 
 
 
@@ -11,7 +13,9 @@ export const App = () => {
 
     <AppThemeProvider>
       <BrowserRouter >
-        <AppRouts />
+        <MenuLateral>
+          <AppRouts />
+        </MenuLateral>
       </BrowserRouter>
     </AppThemeProvider>
 
