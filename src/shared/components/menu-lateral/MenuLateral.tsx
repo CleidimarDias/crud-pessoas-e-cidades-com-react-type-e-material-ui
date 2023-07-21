@@ -1,5 +1,6 @@
 import { Avatar, Box, Divider, Drawer, Icon, List, ListItemButton, ListItemIcon, ListItemText, useMediaQuery, useTheme } from "@mui/material"
 import { useDrawerContext } from "../../contexts/Drawercontext";
+import { useMatch, useNavigate, useResolvedPath } from "react-router-dom";
 
 interface IMenulateralProps {
     children: React.ReactNode
@@ -9,7 +10,40 @@ export const MenuLateral: React.FC<IMenulateralProps> = ({ children }) => {
 
     const theme = useTheme();
     const smDown = useMediaQuery(theme.breakpoints.down('sm'))
-    const {isDrawerOpen, toggleDrawerOpen} = useDrawerContext()
+    const { isDrawerOpen, toggleDrawerOpen, drawerOptions } = useDrawerContext()
+
+    interface IListItemLink {
+        icon: string;
+        label: string;
+        to: string;
+        onclick: (() => void) | undefined;
+    }
+
+    const ListItemLink: React.FC<IListItemLink> = ({ icon, label, onclick, to }) => {
+
+        const navigate = useNavigate()
+        const resolvedPath = useResolvedPath(to);
+        const match = useMatch({path: resolvedPath.pathname, end: true})
+
+
+        const handleClick = () => {
+            return (
+                onclick?.(),
+                navigate(to)
+            )
+        }
+
+        return (
+            <ListItemButton selected={!!match} onClick={handleClick} >
+                <ListItemIcon>
+                    <Icon>
+                        {icon}
+                    </Icon>
+                </ListItemIcon>
+                <ListItemText primary={label} />
+            </ListItemButton>
+        )
+    }
 
     return (
         <>
@@ -17,7 +51,7 @@ export const MenuLateral: React.FC<IMenulateralProps> = ({ children }) => {
                 <Box width={theme.spacing(28)}
                     display='flex'
                     flexDirection='column'
-                    // height='100%' bgcolor='yellowgreen'
+                // height='100%' bgcolor='yellowgreen'
                 >
 
                     <Box
@@ -35,33 +69,22 @@ export const MenuLateral: React.FC<IMenulateralProps> = ({ children }) => {
                         />
                     </Box>
 
-                    <Divider />                  
+                    <Divider />
 
                     <Box flex={1}>
                         <List component='nav'>
-                            <ListItemButton>
-                                <ListItemIcon>
-                                    <Icon>
-                                        home
-                                    </Icon>
-                                </ListItemIcon>
-                                <ListItemText primary='Página Inicial' />                                
-                            </ListItemButton>
-
-                            <ListItemButton>
-                                <ListItemIcon>
-                                    <Icon>
-                                        star
-                                    </Icon>
-                                </ListItemIcon>
-                                <ListItemText primary='gostosas' />                                
-                            </ListItemButton>
+                           {drawerOptions.map(drawerOptions =>(
+                             <ListItemLink
+                             key={drawerOptions.path}
+                             icon={drawerOptions.icon}
+                             label={drawerOptions.label}
+                             onclick={smDown ? toggleDrawerOpen : undefined}
+                             to={drawerOptions.path}
+                         />
+                           ))}                            
                         </List>
                     </Box>
-
-
                 </Box>
-
             </Drawer>
 
             <Box height='100vh' marginLeft={smDown ? 0 : theme.spacing(28)}>
