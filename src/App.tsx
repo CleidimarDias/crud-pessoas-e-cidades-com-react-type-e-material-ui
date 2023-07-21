@@ -1,7 +1,8 @@
 import { BrowserRouter } from 'react-router-dom'
 import { AppRouts } from './routes'
-import { AppThemeProvider } from './shared/contexts/ThemeContext'
+import { AppThemeProvider } from './shared/contexts'
 import { MenuLateral } from './shared/components'
+import { DrawerProvider } from './shared/contexts'
 
 
 
@@ -12,11 +13,13 @@ export const App = () => {
   return (
 
     <AppThemeProvider>
-      <BrowserRouter >
-        <MenuLateral>
-          <AppRouts />
-        </MenuLateral>
-      </BrowserRouter>
+      <DrawerProvider>
+        <BrowserRouter >
+          <MenuLateral>
+            <AppRouts />
+          </MenuLateral>
+        </BrowserRouter>
+      </DrawerProvider>
     </AppThemeProvider>
 
 
