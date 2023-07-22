@@ -1,1 +1,1 @@
-export {};
+export * from './layout-base-de-pagina/LayoutBaseDePagina';
