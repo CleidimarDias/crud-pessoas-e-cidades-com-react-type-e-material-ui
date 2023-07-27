@@ -1,18 +1,36 @@
 import { useSearchParams } from "react-router-dom"
 import { FerrametasDaListagem } from "../../shared/components/ferramentas-da-listagem/FerramentasDaListagem"
 import { LayoutBaseDePagina } from "../../shared/layouts"
-import { useMemo } from "react"
+import { useEffect, useMemo } from "react"
+import { PessoasService } from "../../shared/services/api/pessoas/PessoasService"
+import { useDebounce } from "../../shared/hooks"
 
-export const ListagemDeCidade: React.FC = () => {
+export const ListagemDePessoas: React.FC = () => {
 
     const [searchParams, setSearchParams] = useSearchParams()
+    const {debounce} = useDebounce()
 
     const busca = useMemo(()=>{
-        return searchParams.get('busca' || '' )
+        return searchParams.get('busca') || '';
     },[searchParams])
+    // console.log(busca);
+    
+
+    useEffect(()=>{
+        debounce(()=>{
+            PessoasService.getAll(1,busca ).then((result)=>{
+                if (result instanceof Error) {
+                    alert(result.message);
+    
+                } else{console.log(result)}
+            })
+        })
+        
+    },[busca])
+    
     return (
         <LayoutBaseDePagina
-            titulo="Listagem de Cidades"
+            titulo="Listagem de Pessoas"
             barraDeFerramentas={<FerrametasDaListagem 
                 mostrarBotaoNovo
                 mostrarInputBusca

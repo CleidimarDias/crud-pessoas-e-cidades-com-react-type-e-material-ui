@@ -4,14 +4,14 @@ import { Api } from "../api-config";
 interface IListagemPessoa {
     id: number;
     email: string;
-    cidadeId: string;
+    cidadeId: number;
     nomeCompleto: string
 };
 
 interface IDetalhePessoa {
     id: number;
     email: string;
-    cidadeId: string;
+    cidadeId: number;
     nomeCompleto: string
 };
 
@@ -22,20 +22,23 @@ type TPessoasComTotalCount = {
 
 const getAll = async (page = 1, filter = ''): Promise<TPessoasComTotalCount | Error> => {
     try {
-        const urlRelativa = `/pessoas?_page=${page}&_limite=${Environment.LIMITE_DE_LINHAS}&nomeCompoleto_like=${filter}`
+        const urlRelativa = `/pessoas?_page=${page}&_limit=${Environment.LIMITE_DE_LINHAS}&nomeCompleto_like=${filter}`;
+        
 
         const { data, headers } = await Api.get(urlRelativa);
+
+        // console.log(`data: ${data}`)
 
         if (data) {
             return {
                 data,
-                totalCount: Number(headers['x-total-count '] || Environment.LIMITE_DE_LINHAS),
+                totalCount: Number(headers['x-total-count'] || 0 ),
             }
         }
         return new Error('Erro ao listar os registros!')
     } catch (error) {
         console.error(error)
-        return new Error((error as { message: string }).message || 'Erro ao listar os registros!')
+        return new Error((error as { message: string }).message || 'Erro ao listar os registros!');
     }
 };
 
@@ -85,7 +88,7 @@ const deleteById = async (id: Number): Promise<void | Error> => {
  };
 
 
-export const PessoaService = {
+export const PessoasService = {
     getAll,
     getById,
     create,

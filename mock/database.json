@@ -1,14 +1,17 @@
 {
-    "pessoas":[
+    "pessoas": [
         {
-        "id":1,
-        "name": "Cleidimar",
-        "middleName": "Dias da Silva"
+            "id": 1,
+            "email": "cleidimarcdsc@gmail.com",
+            "cidadeId": 2,
+            "nomeCompleto": "CLEIDIMAR DIAS DA SILVA"
         },
         {
-            "id":2,
-        "name": "Paula",
-        "middleName": "Brito"
+            "id": 2,
+            "email": "paulabrito.@gmail.com",
+            "cidadeId": 2,
+            "nomeCompleto": "Paula Brito de Andrade"
         }
-]
+        
+    ]
 }
