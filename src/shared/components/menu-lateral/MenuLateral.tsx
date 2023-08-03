@@ -67,7 +67,7 @@ export const MenuLateral: React.FC<IMenulateralProps> = ({ children }) => {
                     // bgcolor='yellow'
                     >
                         <Avatar
-                            alt="foto" src="../assets/image/eu.jpg"
+                            alt="foto" src="./assets/image/eu.jpg"
 
                             sx={{ height: theme.spacing(12), width: theme.spacing(12) }}
                         />
