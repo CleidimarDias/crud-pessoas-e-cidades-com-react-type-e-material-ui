@@ -2,11 +2,11 @@ import { TextField, TextFieldProps } from "@mui/material"
 import { useField } from "@unform/core"
 import { useEffect, useState } from "react";
 
-type TUnTextFildProps = TextFieldProps & {
+type TVTextFildProps = TextFieldProps & {
     name: string;
 }
 
-export const UnTextField: React.FC<TUnTextFildProps> = ({name, ...rest}) =>{
+export const VTextField: React.FC<TVTextFildProps> = ({name, ...rest}) =>{
     const {fieldName, registerField, defaultValue, error, clearError} = useField(name);
 
     const [ value, setValue] = useState(defaultValue || '');
@@ -28,10 +28,10 @@ export const UnTextField: React.FC<TUnTextFildProps> = ({name, ...rest}) =>{
             helperText={error}
             defaultValue={defaultValue}
 
-            onKeyDown={()=> error ? clearError() : undefined}
+            onKeyDown={(e)=> {error && clearError(); rest.onKeyDown?.(e) }}
             
             value = {value}
-            onChange={e => setValue(e.target.value)}
+            onChange={e => {setValue(e.target.value); rest.onChange?.(e)}}
         />
         
     )
