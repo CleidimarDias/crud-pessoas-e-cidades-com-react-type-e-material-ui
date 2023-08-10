@@ -1,10 +1,11 @@
 import { useNavigate, useParams } from "react-router-dom"
 import { FerramentasDeDetalhe } from "../../shared/components"
 import { LayoutBaseDePagina } from "../../shared/layouts"
-import { useEffect,  useState } from "react";
+import { useEffect, useState } from "react";
 import { PessoasService } from "../../shared/services/api/pessoas/PessoasService";
 import { Box, Grid, LinearProgress, Paper, Typography } from "@mui/material";
-import { VTextField, VForm, useVForm } from "../../shared/forms";
+import { VTextField, VForm, useVForm, IVFormErrors } from "../../shared/forms";
+import * as yup from 'yup';
 
 
 interface IFormData {
@@ -13,15 +14,24 @@ interface IFormData {
     cidadeId: number;
 }
 
+const formValidationSchema: yup.Schema<IFormData> = yup.object().shape({
+    nomeCompleto: yup.string().required('O campo Nome é obrigatório').min(3, 'No Mínimo 3 caracteres '),
+    email: yup.string().required('O Email é obrigatório').email(),
+    cidadeId: yup.number().required("Campo Obrigatório"),
+})
+
+
+
+
 export const DetalhePessoas: React.FC = () => {
 
     const { id = 'nova' } = useParams<'id'>();
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false)
     const [name, setName] = useState('');
-    const {formRef, save, saveAndClose, IsSaveAndClose} = useVForm()
+    const { formRef, save, saveAndClose, IsSaveAndClose } = useVForm()
 
-   
+
 
     useEffect(() => {
         if (id !== 'nova') {
@@ -35,8 +45,8 @@ export const DetalhePessoas: React.FC = () => {
                     setName(result.nomeCompleto);
                     formRef.current?.setData(result);
                 }
-            })
-        } else{
+            }) 
+        } else {
             formRef.current?.setData({
                 email: '',
                 cidadeId: '',
@@ -46,20 +56,26 @@ export const DetalhePessoas: React.FC = () => {
     }, [id]);
 
     const handleSave = (dados: IFormData) => {
-        setIsLoading(true);
+
+        formValidationSchema.
+            validate(dados, { abortEarly: false })
+
+            .then((dadosValidados) => {
+                setIsLoading(true);
+                
         if (id === "nova") {
-            PessoasService.create(dados).then((result) => {
+            PessoasService.create(dadosValidados).then((result) => {
                 setIsLoading(false)
                 if (result instanceof Error) {
                     alert(result.message);
                 } else {
-                    if(IsSaveAndClose()){
+                    if (IsSaveAndClose()) {
                         navigate('/pessoas')
                     }
-                    else{
+                    else {
                         navigate(`/pessoas/detalhe/${result}`)
                     }
-                    
+
                 }
             })
         } else {
@@ -69,13 +85,26 @@ export const DetalhePessoas: React.FC = () => {
                     if (result instanceof Error) {
                         alert(result.message);
 
-                    }else{
-                        if(IsSaveAndClose()){
+                    } else {
+                        if (IsSaveAndClose()) {
                             navigate('/pessoas')
                         }
                     }
                 })
         }
+            })
+            .catch((errors: yup.ValidationError) => {
+                const validationErrors: IVFormErrors = {};
+
+                errors.inner.forEach(error=>{
+                    if(!error.path) return;
+
+                    validationErrors[error.path] = error.message;
+                })
+                formRef.current?.setErrors(validationErrors);
+            })
+
+        
     }
 
     const handleDelete = (id: number) => {
@@ -110,7 +139,7 @@ export const DetalhePessoas: React.FC = () => {
                         <Grid container spacing={2} padding={2} direction="column">
 
                             {isLoading && (<Grid item >
-                                <LinearProgress variant="indeterminate" />                                
+                                <LinearProgress variant="indeterminate" />
                             </Grid>)}
 
                             <Grid item>
@@ -121,40 +150,40 @@ export const DetalhePessoas: React.FC = () => {
 
                             <Grid item container direction='row' spacing={2} >
                                 <Grid item xs={12} sm={12} md={6} lg={4} xl={2}>
-                                    <VTextField  
-                                    fullWidth label="Nome Completo"
-                                     name="nomeCompleto" 
-                                     disabled={isLoading}
-                                     onChange={e => setName(e.target.value)}
-                                     />
+                                    <VTextField
+                                        fullWidth label="Nome Completo"
+                                        name="nomeCompleto"
+                                        disabled={isLoading}
+                                        onChange={e => setName(e.target.value)}
+                                    />
                                 </Grid>
                             </Grid>
 
                             <Grid item container direction='row' spacing={2}>
                                 <Grid item xs={12} sm={12} md={6} lg={4} xl={2}>
                                     <VTextField
-                                     fullWidth 
-                                     label="Email" 
-                                     name="email" 
-                                     disabled={isLoading}
-                                     />
+                                        fullWidth
+                                        label="Email"
+                                        name="email"
+                                        disabled={isLoading}
+                                    />
                                 </Grid>
                             </Grid>
 
                             <Grid item container direction='row' spacing={2}>
                                 <Grid item xs={12} sm={12} md={6} lg={4} xl={2}>
-                                <VTextField 
-                                fullWidth label="Cidade" 
-                                name="cidadeId"
-                                disabled={isLoading} 
-                                />
+                                    <VTextField
+                                        fullWidth label="Cidade"
+                                        name="cidadeId"
+                                        disabled={isLoading}
+                                    />
                                 </Grid>
                             </Grid>
 
                         </Grid>
 
 
-                        
+
 
                     </Box>
 
