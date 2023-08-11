@@ -3,7 +3,9 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 import { useDrawerContext } from '../shared/contexts/Drawercontext'
 import { useEffect } from 'react'
 import { Dashboard } from '../pages/dashboard/Dashboard'
-import { DetalhePessoas, ListagemDePessoas } from '../pages'
+import { DetalheCidades, DetalhePessoas, ListagemDeCidades, ListagemDePessoas } from '../pages'
+
+
 
 export const AppRouts = () => {
 
@@ -17,9 +19,14 @@ export const AppRouts = () => {
                 path: '/pagina-inicial'
             },
             {
-                icon: 'location_city',
+                icon: 'people',
                 label: 'Pessoas',
                 path: '/pessoas'
+            },
+            {
+                icon: 'location_city',
+                label: 'Cidades',
+                path: '/cidades'
             }
             
         ])
@@ -28,8 +35,12 @@ export const AppRouts = () => {
     return (
         <Routes>
             <Route path='/pagina-inicial' element={<Dashboard />}/> 
+
             <Route path='/pessoas' element={<ListagemDePessoas/>}/>
             <Route path='/pessoas/detalhe/:id' element={<DetalhePessoas/>}/>
+
+            <Route path='/cidades' element={<ListagemDeCidades/>}/>
+            <Route path='/cidades/detalhe/:id' element={<DetalheCidades/>}/>
 
 
             <Route path='*' element={<Navigate to="/pagina-inicial" />} />

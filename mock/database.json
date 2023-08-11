@@ -1,94 +1,9 @@
 {
-  "pessoas": [
+  "pessoas": [],
+  "cidades": [
     {
-      "id": 5,
-      "nomeCompleto": "Ana Paula Silva",
-      "email": "izabele@gamil.com",
-      "cidadeId": 2
-    },
-    {
-      "id": 9,
-      "nomeCompleto": "Izabele Ambrosios",
-      "email": "izabele@gamil.com",
-      "cidadeId": 2
-    },
-    {
-      "id": 11,
-      "nomeCompleto": "Magali",
-      "email": "izabele@gamil.com",
-      "cidadeId": 2
-    },
-    {
-      "id": 12,
-      "email": "izabele@gamil.com",
-      "cidadeId": 2,
-      "nomeCompleto": "Cíntia "
-    },
-    {
-      "id": 13,
-      "email": "izabele@gamil.com",
-      "cidadeId": 2,
-      "nomeCompleto": "Cristina"
-    },
-    {
-      "id": 14,
-      "email": "izabele@gamil.com",
-      "cidadeId": 2,
-      "nomeCompleto": "Jéssica"
-    },
-    {
-      "id": 15,
-      "email": "izabele@gamil.com",
-      "cidadeId": 2,
-      "nomeCompleto": "Camila Abdala"
-    },
-    {
-      "id": 16,
-      "email": "izabele@gamil.com",
-      "cidadeId": 2,
-      "nomeCompleto": "Mônica"
-    },
-    {
-      "nomeCompleto": "Super-Man",
-      "email": "super@hotmail.com",
-      "cidadeId": "26",
-      "id": 17
-    },
-    {
-      "nomeCompleto": "claudio",
-      "email": "claudio@gmail.com",
-      "cidadeId": "17",
-      "id": 18
-    },
-    {
-      "id": 19,
-      "nomeCompleto": "Paula Brito",
-      "email": "Paula@hotmail",
-      "cidadeId": "25"
-    },
-    {
-      "id": 20,
-      "nomeCompleto": "Elba camargo",
-      "email": "Elaba@gmail.com",
-      "cidadeId": "5"
-    },
-    {
-      "nomeCompleto": "Jurema ",
-      "email": "Dias",
-      "cidadeId": "8",
-      "id": 21
-    },
-    {
-      "id": 22,
-      "nomeCompleto": "Jéssica Maria",
-      "email": "jessica@uol.com.br",
-      "cidadeId": "17"
-    },
-    {
-      "cidadeId": 16,
-      "email": "dfasf@gmail.com",
-      "nomeCompleto": "testes",
-      "id": 23
+      "nome": "Anápolis",
+      "id": 1
     }
   ]
 }

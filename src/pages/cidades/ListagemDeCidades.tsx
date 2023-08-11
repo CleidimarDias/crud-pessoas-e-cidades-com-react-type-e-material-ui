@@ -2,18 +2,18 @@ import { useNavigate, useSearchParams } from "react-router-dom"
 import { FerrametasDaListagem } from "../../shared/components/ferramentas-da-listagem/FerramentasDaListagem"
 import { LayoutBaseDePagina } from "../../shared/layouts"
 import { useEffect, useMemo, useState } from "react"
-import { IListagemPessoa, PessoasService } from "../../shared/services/api/pessoas/PessoasService"
+import { IListagemCidade, CidadesService } from "../../shared/services/api/cidades/CidadesService"
 import { useDebounce } from "../../shared/hooks"
 import { Icon, IconButton, LinearProgress, Pagination, Paper, Table, TableBody, TableCell, TableContainer, TableFooter, TableHead, TableRow } from "@mui/material"
 import { Environment } from "../../shared/environment"
 
-export const ListagemDePessoas: React.FC = () => {
+export const ListagemDeCidades: React.FC = () => {
 
     const [searchParams, setSearchParams] = useSearchParams()
     const { debounce } = useDebounce();
     const navigate = useNavigate();
 
-    const [rows, setRows] = useState<IListagemPessoa[]>([])
+    const [rows, setRows] = useState<IListagemCidade[]>([])
     const [totalCount, setTotalCount] = useState(0);
     const [isLoading, setIsloading] = useState(true)
 
@@ -31,12 +31,14 @@ export const ListagemDePessoas: React.FC = () => {
     useEffect(() => {
         setIsloading(true)
         debounce(() => {
-            PessoasService.getAll(pagina, busca).then((result) => {
-                setIsloading(false);
+            CidadesService.getAll(pagina, busca).then((result) => {
+                setIsloading(false)
                 if (result instanceof Error) {
                     alert(result.message);
 
                 } else {
+                    console.log(result);
+
                     setTotalCount(result.totalCount);
                     setRows(result.data)
                 }
@@ -45,18 +47,14 @@ export const ListagemDePessoas: React.FC = () => {
 
     }, [busca, pagina])
 
-    const handleDelete =  (id: number)=>{
-        console.log(` id para deletar ${id}`)
+    const handleDelete =   (id: number)=>{
         if(confirm("Deseja realmente apagar?")){
-            PessoasService.deleteById(id).then(result =>{
-                console.log(`id deletado ${id}`)
+            CidadesService.deleteById(id).then(result =>{
                 if(result instanceof Error){
                     alert(result.message);
                 }else{
-                        console.log(id)
-                        setRows(oldRows => [
+                        setRows((oldRows) => [
                         ...oldRows.filter(oldRow => oldRow.id !== id)
-                        
                     ])
                     alert("Registro apagado com sucesso!")
                 }
@@ -66,22 +64,21 @@ export const ListagemDePessoas: React.FC = () => {
 
     return (
         <LayoutBaseDePagina
-            titulo="Listagem de Pessoas"
+            titulo="Listagem de Cidades"
             barraDeFerramentas={<FerrametasDaListagem
                 mostrarBotaoNovo
                 mostrarInputBusca
                 textoBotaoNovo="Nova"
                 textoDaBusca={busca ?? ''}
-                aoClicarBotaoNovo={()=>navigate('/pessoas/detalhe/nova')}
+                aoClicarBotaoNovo={()=>navigate('/cidades/detalhe/nova')}
                 aoMudarTextoDaBusca={texto => setSearchParams({ busca: texto, pagina: '1' }, { replace: true })}
             />}>
             <TableContainer component={Paper} variant="outlined" sx={{margin: 1, width: 'auto'}}>
                 <Table>
                     <TableHead>
                         <TableRow>
-                            <TableCell width={100}>Ações</TableCell>
-                            <TableCell>Nome Completo</TableCell>
-                            <TableCell>E-mail</TableCell>
+                            <TableCell>Ações</TableCell>
+                            <TableCell>Cidade</TableCell>                            
                             <TableCell>ID</TableCell>
                         </TableRow>
                     </TableHead>
@@ -94,15 +91,14 @@ export const ListagemDePessoas: React.FC = () => {
                                             delete
                                         </Icon>
                                     </IconButton>
-                                    <IconButton size="small" onClick={()=>navigate(`/pessoas/detalhe/${row.id}`)}>
+                                    <IconButton size="small" onClick={()=>navigate(`/cidades/detalhe/${row.id}`)}>
                                         <Icon>
                                             edit
                                         </Icon>
                                     </IconButton>
                                 </TableCell>
-                                <TableCell>{row.nomeCompleto}</TableCell>
-                                <TableCell>{row.email}</TableCell>
-                                <TableCell>{row.id}</TableCell>
+                                <TableCell>{row.nome}</TableCell>
+                                <TableCell>{row.id}</TableCell>                               
                             </TableRow>
 
                         ))}

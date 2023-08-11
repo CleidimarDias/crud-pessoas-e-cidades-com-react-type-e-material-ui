@@ -1,0 +1,131 @@
+[33mcommit f05d3cebe3b7637121ccc414d769493882c1a431[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: Cleidimar Dias <cleidimarcdsc@gmail.com>
+Date:   Thu Aug 10 10:49:55 2023 -0300
+
+    configurado validações com o yup para os formularios cadastro pessoas
+
+[33mcommit de4cf7be0436ce63e7b1adbd2a0e3af2697bb176[m
+Author: Cleidimar Dias <cleidimarcdsc@gmail.com>
+Date:   Thu Aug 10 10:44:37 2023 -0300
+
+    validação de formularios com yup
+
+[33mcommit 7d6681a515d5f4ab7fdfb858da1a0c067ce848e1[m
+Author: Cleidimar Dias <cleidimarcdsc@gmail.com>
+Date:   Wed Aug 9 12:38:53 2023 -0300
+
+    Criado formularios com unForm configurado salvar e salvar e fechar
+
+[33mcommit 05fe6234e1d099633987f2bb1251a1a0ce4ab608[m
+Author: Cleidimar Dias <cleidimarcdsc@gmail.com>
+Date:   Thu Aug 3 09:08:27 2023 -0300
+
+    criado formulario para criar pessoas, handleDelete, handleSave para atualizar e deletar
+
+[33mcommit 653cfdb42f19777abf951f0fe64da83c9ab70471[m
+Author: Cleidimar Dias <cleidimarcdsc@gmail.com>
+Date:   Fri Jul 28 15:39:36 2023 -0300
+
+    configurado delete de pessoas
+
+[33mcommit b055fb5a067351d5b665e9b2c5c79e11e82df73f[m
+Author: Cleidimar Dias <cleidimarcdsc@gmail.com>
+Date:   Thu Jul 27 17:00:42 2023 -0300
+
+    adicionado paginação à listagem de pessoas
+
+[33mcommit 51e27de679d5036d041bea80efbab771f084e49b[m
+Author: Cleidimar Dias <cleidimarcdsc@gmail.com>
+Date:   Thu Jul 27 15:58:13 2023 -0300
+
+    Criado tabela para mostrar dados da página pessoas
+
+[33mcommit f73d82dca7e6073ee7b509816feb6f937437a94c[m
+Author: Cleidimar Dias <cleidimarcdsc@gmail.com>
+Date:   Thu Jul 27 12:23:23 2023 -0300
+
+    Criado hoock useDebounce para evitar que o front faça consulta ao back a cada letra digitada na imput de busca
+
+[33mcommit 13139de7b5c5c4dd8f072c902f7f4cdbff6f2ffc[m
+Author: Cleidimar Dias <cleidimarcdsc@gmail.com>
+Date:   Wed Jul 26 16:41:26 2023 -0300
+
+    iniciando configuração para listagem de cidades utilizando serch paramas
+
+[33mcommit b4d6c4b415e0ecf14998fab4298fd4575abbe50f[m
+Author: Cleidimar Dias <cleidimarcdsc@gmail.com>
+Date:   Wed Jul 26 15:47:10 2023 -0300
+
+    criado service de pessoasService
+
+[33mcommit 67081e8465cb80166304a58d6a94db10af0b8f2b[m
+Author: Cleidimar Dias <cleidimarcdsc@gmail.com>
+Date:   Tue Jul 25 12:54:24 2023 -0300
+
+    criado axios-config e interseptors
+
+[33mcommit 7e12498dbfd29a77bd323c6a3dd2f9f4bed0bc3b[m
+Author: Cleidimar Dias <cleidimarcdsc@gmail.com>
+Date:   Tue Jul 25 09:43:35 2023 -0300
+
+    instalado json-server
+
+[33mcommit 14bd428200fbdc69cafc59a791f691955cd95a40[m
+Author: Cleidimar Dias <cleidimarcdsc@gmail.com>
+Date:   Mon Jul 24 13:54:49 2023 -0300
+
+    feat: responsividade ,skeleton a barra de listagem
+
+[33mcommit f09d911ceaa5b45516e9fe3d057aed9b229e9ba4[m
+Author: Cleidimar Dias <cleidimarcdsc@gmail.com>
+Date:   Mon Jul 24 09:21:37 2023 -0300
+
+    ferramentas da listagem e ferramentas de detalhe
+
+[33mcommit 27a0c2c766dc67f1621d03edeabe37e28239ec01[m
+Author: Cleidimar Dias <cleidimarcdsc@gmail.com>
+Date:   Sat Jul 22 15:52:54 2023 -0300
+
+    criado layout base de página
+
+[33mcommit 38351f2f91135df0a609a25ebc6709fe3d2db8ca[m
+Author: Cleidimar Dias <cleidimarcdsc@gmail.com>
+Date:   Fri Jul 21 12:36:28 2023 -0300
+
+    Configurado drawer options e setDrawerOptions
+
+[33mcommit 602648ff14a9cd7ff28f8d4f102100c501a34854[m
+Author: Cleidimar Dias <cleidimarcdsc@gmail.com>
+Date:   Fri Jul 21 10:52:17 2023 -0300
+
+    adicionado responsividade no menu lateral
+
+[33mcommit 87242956be9c8846574d03403e5bbc77a5c9b0c4[m
+Author: Cleidimar Dias <cleidimarcdsc@gmail.com>
+Date:   Thu Jul 20 17:35:27 2023 -0300
+
+    adicionado drawer
+
+[33mcommit 72c9ab91ba3f531c3f771cd95fe85e946017889b[m
+Author: Cleidimar Dias <cleidimarcdsc@gmail.com>
+Date:   Thu Jul 20 15:38:09 2023 -0300
+
+    adicionado tema escuro e troca de tema
+
+[33mcommit 75427b0c40f0b0d73086fe696e257b98e1468de6[m
+Author: Cleidimar Dias <cleidimarcdsc@gmail.com>
+Date:   Thu Jul 20 14:12:05 2023 -0300
+
+    adicionado tema light e themeprovider
+
+[33mcommit 902062fd3bd35aae78433c1d35ed3412671ae223[m
+Author: Cleidimar Dias <cleidimarcdsc@gmail.com>
+Date:   Thu Jul 20 11:49:34 2023 -0300
+
+    Adicionado React-Router-Dom
+
+[33mcommit b1aeb0a64c9638946a641872dbb553a22d6d8000[m
+Author: Cleidimar Dias <cleidimarcdsc@gmail.com>
+Date:   Thu Jul 20 10:59:37 2023 -0300
+
+    estrutuação de pastas
