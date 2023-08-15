@@ -2,8 +2,20 @@
   "pessoas": [],
   "cidades": [
     {
-      "nome": "Anápolis",
-      "id": 1
+      "nome": "Trindade",
+      "id": 4
+    },
+    {
+      "nome": "jaragua",
+      "id": 5
+    },
+    {
+      "nome": "New York",
+      "id": 6
+    },
+    {
+      "id": 7,
+      "nome": "Rio de Já"
     }
   ]
 }

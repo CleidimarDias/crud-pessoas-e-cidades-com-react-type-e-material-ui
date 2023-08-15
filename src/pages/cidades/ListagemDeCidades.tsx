@@ -53,7 +53,7 @@ export const ListagemDeCidades: React.FC = () => {
                 if(result instanceof Error){
                     alert(result.message);
                 }else{
-                        setRows((oldRows) => [
+                        setRows(oldRows => [
                         ...oldRows.filter(oldRow => oldRow.id !== id)
                     ])
                     alert("Registro apagado com sucesso!")

@@ -44,7 +44,7 @@ export const DetalheCidades: React.FC = () => {
             })
         } else {
             formRef.current?.setData({
-                Nome: ''
+                nome: ''
             })
         }
     }, [id]);

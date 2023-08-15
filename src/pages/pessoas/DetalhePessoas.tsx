@@ -36,7 +36,7 @@ export const DetalhePessoas: React.FC = () => {
     useEffect(() => {
         if (id !== 'nova') {
             setIsLoading(true);
-            PessoasService.getById(Number(id)).then((result) => {
+            PessoasService.getById(Number(id)).then((result)=>{
                 setIsLoading(false);
                 if (result instanceof Error) {
                     alert(result.message);
@@ -79,7 +79,7 @@ export const DetalhePessoas: React.FC = () => {
                 }
             })
         } else {
-            PessoasService.updateById(Number(id), { id: Number(id), ...dados })
+            PessoasService.updateById(Number(id), { id: Number(id), ...dadosValidados })
                 .then((result) => {
                     setIsLoading(false);
                     if (result instanceof Error) {
@@ -113,15 +113,15 @@ export const DetalhePessoas: React.FC = () => {
                 if (result instanceof Error) {
                     result.message;
                 } else {
-                    alert(`${name} apagado com sucesso`)
-                    navigate("/pessoas")
+                    alert(`Registro apagado com sucesso`);
+                    navigate("/pessoas");
                 }
             })
         }
     }
 
     return (
-        <LayoutBaseDePagina titulo={id !== 'nova' ? name : "Novo Registro"}
+        <LayoutBaseDePagina titulo={id === 'nova' ? "Nova Cidade" : name}
             barraDeFerramentas={<FerramentasDeDetalhe
                 mostrarBotaoSalvarEFechar
                 mostrarBotaoApagar={id !== 'nova'}

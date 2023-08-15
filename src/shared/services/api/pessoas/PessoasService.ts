@@ -5,7 +5,7 @@ export interface IListagemPessoa {
     id: number;
     email: string;
     cidadeId: number;
-    nomeCompleto: string
+    nomeCompleto: string;
 };
 
 export interface IDetalhePessoa {
@@ -56,7 +56,7 @@ const getById = async (id: number): Promise<IDetalhePessoa | Error> => {
 
 };
 
-const create = async (dados: Omit<IDetalhePessoa, 'id'>): Promise<Number | Error> => {
+const create = async (dados: Omit<IDetalhePessoa, 'id'>): Promise<number | Error> => {
     try {
         const { data } = await Api.post<IDetalhePessoa>('/pessoas', dados);
         if (data) {
@@ -79,9 +79,9 @@ const updateById = async (id: number, dados: IDetalhePessoa): Promise<void | Err
 
 };
 
-const deleteById = async (id: Number): Promise<void | Error> => {
+const deleteById = async (id: number): Promise<void | Error> => {
     try {
-        await Api.delete(`/pessoas/${id}`)
+        await Api.delete(`/pessoas/${id}`);
     } catch (error) {
         return new Error((error as { message: string }).message || 'Erro ao apagar o Registro!')
     }
