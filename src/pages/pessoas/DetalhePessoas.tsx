@@ -6,6 +6,7 @@ import { PessoasService } from "../../shared/services/api/pessoas/PessoasService
 import { Box, Grid, LinearProgress, Paper, Typography } from "@mui/material";
 import { VTextField, VForm, useVForm, IVFormErrors } from "../../shared/forms";
 import * as yup from 'yup';
+import { AutoCompleteCidade } from "./components/AutoCompleteCidade";
 
 
 interface IFormData {
@@ -49,14 +50,14 @@ export const DetalhePessoas: React.FC = () => {
         } else {
             formRef.current?.setData({
                 email: '',
-                cidadeId: '',
+                cidadeId: undefined,
                 nomeCompleto: ''
             })
         }
     }, [id]);
 
     const handleSave = (dados: IFormData) => {
-
+        console.log(dados)
         formValidationSchema.
             validate(dados, { abortEarly: false })
 
@@ -102,9 +103,7 @@ export const DetalhePessoas: React.FC = () => {
                     validationErrors[error.path] = error.message;
                 })
                 formRef.current?.setErrors(validationErrors);
-            })
-
-        
+            })        
     }
 
     const handleDelete = (id: number) => {
@@ -172,22 +171,12 @@ export const DetalhePessoas: React.FC = () => {
 
                             <Grid item container direction='row' spacing={2}>
                                 <Grid item xs={12} sm={12} md={6} lg={4} xl={2}>
-                                    <VTextField
-                                        fullWidth label="Cidade"
-                                        name="cidadeId"
-                                        disabled={isLoading}
-                                    />
+                                    <AutoCompleteCidade isExternalLoadin={isLoading}/>
                                 </Grid>
                             </Grid>
 
                         </Grid>
-
-
-
-
                     </Box>
-
-
                 </VForm>
             </>
 

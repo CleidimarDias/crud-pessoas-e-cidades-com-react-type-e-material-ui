@@ -1,14 +1,25 @@
 {
-  "pessoas": [],
-  "cidades": [
+  "pessoas": [
     {
-      "nome": "Trindade",
+      "id": 2,
+      "nomeCompleto": "juca",
+      "email": "juca@blablabla",
+      "cidadeId": 9
+    },
+    {
+      "nomeCompleto": "Cleidimar Dias",
+      "email": "cleidimarcdsc@gmail.com",
+      "cidadeId": 9,
+      "id": 3
+    },
+    {
+      "nomeCompleto": "paula Dias",
+      "email": "dias@gmail.co",
+      "cidadeId": 6,
       "id": 4
-    },
-    {
-      "nome": "jaragua",
-      "id": 5
-    },
+    }
+  ],
+  "cidades": [
     {
       "nome": "New York",
       "id": 6
@@ -16,6 +27,14 @@
     {
       "id": 7,
       "nome": "Rio de Já"
+    },
+    {
+      "nome": "Anápolis",
+      "id": 8
+    },
+    {
+      "nome": "Jaraguá",
+      "id": 9
     }
   ]
 }
