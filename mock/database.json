@@ -13,17 +13,19 @@
       "id": 3
     },
     {
-      "nomeCompleto": "paula Dias",
-      "email": "dias@gmail.co",
-      "cidadeId": 6,
+      "nomeCompleto": "Raul",
+      "email": "raul@gmail.com",
+      "cidadeId": 10,
       "id": 4
+    },
+    {
+      "id": 5,
+      "nomeCompleto": "Camila",
+      "email": "camila@gmail.com",
+      "cidadeId": 9
     }
   ],
   "cidades": [
-    {
-      "nome": "New York",
-      "id": 6
-    },
     {
       "id": 7,
       "nome": "Rio de Já"
@@ -35,6 +37,14 @@
     {
       "nome": "Jaraguá",
       "id": 9
+    },
+    {
+      "id": 10,
+      "nome": "Pindamonhagaba"
+    },
+    {
+      "id": 11,
+      "nome": "Curitiba"
     }
   ]
 }

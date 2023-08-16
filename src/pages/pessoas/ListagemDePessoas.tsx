@@ -39,6 +39,7 @@ export const ListagemDePessoas: React.FC = () => {
                 } else {
                     setTotalCount(result.totalCount);
                     setRows(result.data)
+                    console.log(result.totalCount)
                 }
             })
         })
